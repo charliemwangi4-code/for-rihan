@@ -201,7 +201,7 @@ opacity:0;
 /* ========= INTRO SCREEN ========= */
 
 .hidden{
-    display:none;
+    display:none !important;
 }
 
 .intro{
