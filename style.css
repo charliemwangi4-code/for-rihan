@@ -81,7 +81,7 @@ button{
 
     cursor:pointer;
 
-    transition:.35s;
+   transition:.35s;
 
     box-shadow:
     0 12px 25px rgba(255,113,171,.35);
@@ -318,4 +318,11 @@ display:none;
 
     opacity:1;
 
+}
+#startButton{
+    transition: transform .2s ease;
+}
+
+#startButton:active{
+    transform:scale(.88);
 }
