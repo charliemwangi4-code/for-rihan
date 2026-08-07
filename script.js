@@ -6,7 +6,7 @@ function createHeart(){
 
     heart.classList.add("heart");
 
-    heart.innerHTML = "💕" "🥹";
+    heart.innerHTML = "💕";
 
     heart.style.left = Math.random()*100+"vw";
 
