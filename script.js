@@ -39,10 +39,14 @@ start.onclick=()=>{
 
     start.style.transform="scale(.88)";
 
+    createSparkles(); // ✨ ADD THIS
+
     paused=true;
 
     hero.style.transition="1s";
     hero.style.opacity="0";
+
+    document.body.classList.add("screenFade"); // 🌸 ADD THIS
 
     setTimeout(()=>{
 
@@ -63,6 +67,10 @@ start.onclick=()=>{
                     typing2,
                     ()=>{
                         continueBtn.style.display="inline-block";
+
+                        setTimeout(()=>{
+                            continueBtn.classList.add("appear");
+                        },100);
                     }
                 );
             }
@@ -71,7 +79,6 @@ start.onclick=()=>{
     },1000);
 
 };
-
 function typeText(text,element,callback){
 
     let i=0;
@@ -91,5 +98,30 @@ function typeText(text,element,callback){
         }
 
     },65);
+
+}
+function createSparkles(){
+
+    for(let i=0;i<25;i++){
+
+        const sparkle=document.createElement("div");
+
+        sparkle.innerHTML="✨";
+        sparkle.className="sparkle";
+
+        sparkle.style.left="50%";
+        sparkle.style.top="50%";
+
+        sparkle.style.setProperty("--x",Math.random()*400-200+"px");
+        sparkle.style.setProperty("--y",Math.random()*400-200+"px");
+
+        document.body.appendChild(sparkle);
+
+
+        setTimeout(()=>{
+            sparkle.remove();
+        },1000);
+
+    }
 
 }
