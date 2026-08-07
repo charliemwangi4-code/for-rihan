@@ -101,18 +101,25 @@ function typeText(text,element,callback){
 }
 function createSparkles(){
 
-    for(let i=0;i<25;i++){
+    for(let i=0;i<30;i++){
 
         const sparkle=document.createElement("div");
 
-        sparkle.innerHTML="✨";
         sparkle.className="sparkle";
+        sparkle.innerHTML="✨";
 
         sparkle.style.left="50%";
         sparkle.style.top="50%";
 
-        sparkle.style.setProperty("--x",Math.random()*400-200+"px");
-        sparkle.style.setProperty("--y",Math.random()*400-200+"px");
+        sparkle.style.setProperty(
+            "--x",
+            (Math.random()*400-200)+"px"
+        );
+
+        sparkle.style.setProperty(
+            "--y",
+            (Math.random()*400-200)+"px"
+        );
 
         document.body.appendChild(sparkle);
 
@@ -120,7 +127,6 @@ function createSparkles(){
         setTimeout(()=>{
             sparkle.remove();
         },1000);
-
     }
 
 }
