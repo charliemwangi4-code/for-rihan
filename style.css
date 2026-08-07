@@ -198,3 +198,68 @@ opacity:0;
 }
 
 }
+/* ========= INTRO SCREEN ========= */
+
+.hidden{
+    display:none;
+}
+
+.intro{
+
+    position:fixed;
+
+    inset:0;
+
+    background:linear-gradient(
+    135deg,
+    #ffd6e7,
+    #ffe9f3,
+    #fff9fc);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    z-index:999;
+
+    text-align:center;
+
+    opacity:0;
+
+    transition:1s;
+}
+
+.intro.show{
+
+    display:flex;
+
+    opacity:1;
+}
+
+.intro h1{
+
+    color:#ff4f95;
+
+    font-size:3rem;
+
+    margin-bottom:25px;
+}
+
+.intro p{
+
+    color:#7b5064;
+
+    font-size:1.3rem;
+
+    margin-bottom:35px;
+}
+
+#continueBtn{
+
+display:none;
+
+}
