@@ -37,8 +37,7 @@ const continueBtn=document.getElementById("continueBtn");
 
 start.onclick=()=>{
 
-    start.style.transform="scale(.88)";
-
+    
     createSparkles(); // ✨ ADD THIS
 
     paused=true;
