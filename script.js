@@ -6,8 +6,10 @@ function createHeart(){
 
     heart.classList.add("heart");
 
-    heart.innerHTML = "💕";
+    const emojis = ["🥹","💕","🫶🏽"];
 
+heart.innerHTML =
+emojis[Math.floor(Math.random()*emojis.length)];
     heart.style.left = Math.random()*100+"vw";
 
     heart.style.animationDuration =
