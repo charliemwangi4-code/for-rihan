@@ -263,3 +263,59 @@ opacity:0;
 display:none;
 
 }
+.sparkle{
+    position:fixed;
+    font-size:25px;
+    pointer-events:none;
+    animation:sparkleBoom 1s ease forwards;
+}
+
+
+@keyframes sparkleBoom{
+
+    from{
+        transform:translate(0,0) scale(0);
+        opacity:1;
+    }
+
+    to{
+        transform:translate(var(--x),var(--y)) scale(1.5);
+        opacity:0;
+    }
+
+}
+
+
+.screenFade{
+
+    animation:fadeAll 1.5s forwards;
+
+}
+
+
+@keyframes fadeAll{
+
+    from{
+        filter:brightness(1);
+    }
+
+    to{
+        filter:brightness(1.8);
+    }
+
+}
+
+
+#continueBtn{
+
+    opacity:0;
+    transition:1s ease;
+
+}
+
+
+#continueBtn.appear{
+
+    opacity:1;
+
+}
