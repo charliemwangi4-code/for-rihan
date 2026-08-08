@@ -155,3 +155,17 @@ storyNext1.onclick = () => {
     });
 
 };
+const chapter3 = document.getElementById("chapter3");
+const storyNext2 = document.getElementById("storyNext2");
+
+storyNext2.onclick = () => {
+
+    storyNext2.style.display = "none";
+
+    chapter3.classList.remove("hidden");
+
+    requestAnimationFrame(() => {
+        chapter3.classList.add("show");
+    });
+
+};
