@@ -45,7 +45,7 @@ start.onclick=()=>{
     hero.style.transition="1s";
     hero.style.opacity="0";
 
-    document.body.classList.add("screenFade"); // 🌸 ADD THIS
+    // 🌸 ADD THIS
 
     setTimeout(()=>{
 
