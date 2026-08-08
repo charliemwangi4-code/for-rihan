@@ -104,7 +104,6 @@ function typeText(text, element, callback) {
     }, 65);
 }
 const chapter1 = document.getElementById("chapter1");
-const nextButton = document.getElementById("nextButton");
 
 continueBtn.onclick = () => {
 
@@ -124,7 +123,6 @@ continueBtn.onclick = () => {
 
 };
 const storyPage = document.getElementById("storyPage");
-const nextButton = document.getElementById("nextButton");
 
 nextButton.onclick = () => {
 
