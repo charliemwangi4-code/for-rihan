@@ -421,3 +421,69 @@ button:hover {
             translateY(0);
     }
 }
+/* ================= CINEMATIC PHOTO ================= */
+
+.rihanPhoto {
+    width: 300px;
+    height: 380px;
+
+    object-fit: cover;
+
+    border-radius: 28px;
+
+    border: 4px solid rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 0 20px rgba(255, 105, 160, 0.25),
+        0 20px 50px rgba(255, 80, 150, 0.35);
+
+    animation:
+        photoAppear 1.5s ease forwards,
+        photoFloat 4s ease-in-out 1.5s infinite;
+
+    transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.rihanPhoto:hover {
+    transform: scale(1.03);
+
+    box-shadow:
+        0 0 30px rgba(255, 105, 160, 0.4),
+        0 25px 60px rgba(255, 80, 150, 0.45);
+}
+
+
+@keyframes photoAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(.75)
+            translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+@keyframes photoFloat {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
