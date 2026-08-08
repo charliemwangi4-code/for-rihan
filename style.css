@@ -322,3 +322,102 @@ button:hover {
         transform: translateY(0px);
     }
 }
+/* ================= PAGE 3 ================= */
+
+.chapter {
+    position: fixed;
+    inset: 0;
+
+    background: linear-gradient(
+        135deg,
+        #ffd6e7,
+        #ffe9f3,
+        #fff5fa
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    z-index: 999;
+
+    opacity: 0;
+
+    transition: 1s ease;
+}
+
+.chapter.show {
+    opacity: 1;
+}
+
+.chapter h1 {
+    color: #ff5e9b;
+
+    font-size: 3rem;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 20px rgba(255,94,155,.25);
+}
+
+.chapterText {
+    color: #7b5064;
+
+    font-size: 1.2rem;
+
+    margin-bottom: 25px;
+}
+
+.rihanPhoto {
+    width: 280px;
+    height: 350px;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    border: 5px solid rgba(255,255,255,.8);
+
+    box-shadow:
+        0 15px 40px rgba(255,94,155,.3);
+
+    animation: photoAppear 1.5s ease;
+}
+
+.photoMessage {
+    color: #7b5064;
+
+    font-size: 1.15rem;
+
+    max-width: 500px;
+
+    margin: 25px 20px;
+
+    line-height: 1.7;
+}
+
+#nextButton {
+    margin-top: 5px;
+}
+
+@keyframes photoAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            scale(.8)
+            translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
