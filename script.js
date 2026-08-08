@@ -27,6 +27,7 @@ function createHeart(){
 
 setInterval(createHeart,350);
 
+
 const hero=document.querySelector(".hero");
 const intro=document.getElementById("intro");
 const start=document.getElementById("startButton");
@@ -35,17 +36,15 @@ const typing=document.getElementById("typing");
 const typing2=document.getElementById("typing2");
 const continueBtn=document.getElementById("continueBtn");
 
+
 start.onclick=()=>{
 
-    
-    createSparkles(); // ✨ ADD THIS
+    start.style.transform="scale(.88)";
 
     paused=true;
 
     hero.style.transition="1s";
     hero.style.opacity="0";
-
-    // 🌸 ADD THIS
 
     setTimeout(()=>{
 
@@ -61,30 +60,34 @@ start.onclick=()=>{
             "Hi babyyyy RayRay 🥹💕",
             typing,
             ()=>{
+
                 typeText(
                     "Welcome to our little world...",
                     typing2,
-                    (continueBtn.style.display="inline-block";
+                    ()=>{
 
-setTimeout(()=>{
-    continueBtn.style.opacity="1";
-},100);)=>{
-
+                        continueBtn.style.display="inline-block";
 
                         setTimeout(()=>{
-                            continueBtn.classList.add("appear");
+                            continueBtn.style.opacity="1";
                         },100);
+
                     }
                 );
+
             }
         );
 
     },1000);
 
 };
+
+
 function typeText(text,element,callback){
 
     let i=0;
+
+    element.innerHTML="";
 
     const timer=setInterval(()=>{
 
@@ -101,36 +104,5 @@ function typeText(text,element,callback){
         }
 
     },65);
-
-}
-function createSparkles(){
-
-    for(let i=0;i<30;i++){
-
-        const sparkle=document.createElement("div");
-
-        sparkle.className="sparkle";
-        sparkle.innerHTML="✨";
-
-        sparkle.style.left="50%";
-        sparkle.style.top="50%";
-
-        sparkle.style.setProperty(
-            "--x",
-            (Math.random()*400-200)+"px"
-        );
-
-        sparkle.style.setProperty(
-            "--y",
-            (Math.random()*400-200)+"px"
-        );
-
-        document.body.appendChild(sparkle);
-
-
-        setTimeout(()=>{
-            sparkle.remove();
-        },1000);
-    }
 
 }
