@@ -141,3 +141,17 @@ nextButton.onclick = () => {
     }, 800);
 
 };
+const chapter2 = document.getElementById("chapter2");
+const storyNext1 = document.getElementById("storyNext1");
+
+storyNext1.onclick = () => {
+
+    storyNext1.style.display = "none";
+
+    chapter2.classList.remove("hidden");
+
+    requestAnimationFrame(() => {
+        chapter2.classList.add("show");
+    });
+
+};
