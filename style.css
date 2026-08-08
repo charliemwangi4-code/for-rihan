@@ -235,28 +235,34 @@ opacity:0;
 }
 
 .intro h1{
-color:#d63384;
-text-shadow:0 3px 10px rgba(214,51,132,.25);
-}
-
+    color:#ff5e9b;
     font-size:3rem;
-
     margin-bottom:25px;
+    text-shadow:
+        0 0 20px rgba(255,94,155,.25);
 }
 
 .intro p{
-color:#5c3045;
-font-weight:500;
-}
+    color:#7b5064;
     font-size:1.3rem;
+    margin-bottom:35px;
+}
 
+.intro p{
+    color:#7b5064;
+    font-size:1.3rem;
     margin-bottom:35px;
 }
 
 #continueBtn{
+    display:none;
+    opacity:0;
+    transition:opacity 1s ease;
+}
 
-display:none;
-
+#continueBtn.appear{
+    display:inline-block;
+    opacity:1;
 }
 .sparkle{
     position:fixed;
