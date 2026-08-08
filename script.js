@@ -103,3 +103,23 @@ function typeText(text, element, callback) {
 
     }, 65);
 }
+const chapter1 = document.getElementById("chapter1");
+const nextButton = document.getElementById("nextButton");
+
+continueBtn.onclick = () => {
+
+    intro.classList.remove("show");
+
+    setTimeout(() => {
+
+        intro.classList.add("hidden");
+
+        chapter1.classList.remove("hidden");
+
+        requestAnimationFrame(() => {
+            chapter1.classList.add("show");
+        });
+
+    }, 800);
+
+};
