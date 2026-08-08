@@ -66,8 +66,9 @@ start.onclick=()=>{
                     typing2,
                     ()=>{
 
-                        continueBtn.style.display="inline-block";
-
+                       continueBtn.classList.add("appear");
+    }
+);
                         setTimeout(()=>{
                             continueBtn.style.opacity="1";
                         },100);
