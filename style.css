@@ -256,10 +256,10 @@ opacity:0;
 
 #continueBtn{
     display:none;
+    margin-top:10px;
     opacity:0;
     transition:opacity 1s ease;
 }
-
 #continueBtn.appear{
     display:inline-block;
     opacity:1;
