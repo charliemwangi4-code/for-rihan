@@ -205,31 +205,25 @@ opacity:0;
 }
 
 .intro{
-
     position:fixed;
-
     inset:0;
 
     background:linear-gradient(
-    135deg,
-    #ffd6e7,
-    #ffe9f3,
-    #fff9fc);
+        135deg,
+        #ffd6e7,
+        #ffe9f3,
+        #fff5fa
+    );
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     flex-direction:column;
 
     z-index:999;
-
     text-align:center;
 
     opacity:0;
-
     transition:1s;
 }
 
@@ -287,24 +281,6 @@ display:none;
 }
 
 
-.screenFade{
-
-    animation:fadeAll 1.5s forwards;
-
-}
-
-
-@keyframes fadeAll{
-
-    from{
-        filter:brightness(1);
-    }
-
-    to{
-        filter:brightness(1.8);
-    }
-
-}
 
 
 #continueBtn{
