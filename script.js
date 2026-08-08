@@ -65,7 +65,7 @@ start.onclick=()=>{
                     "Welcome to our little world...",
                     typing2,
                     ()=>{
-                        continueBtn.style.display="inline-block";
+continueBtn.classList.add("appear");
 
                         setTimeout(()=>{
                             continueBtn.classList.add("appear");
