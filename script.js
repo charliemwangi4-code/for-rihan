@@ -123,3 +123,23 @@ continueBtn.onclick = () => {
     }, 800);
 
 };
+const storyPage = document.getElementById("storyPage");
+const nextButton = document.getElementById("nextButton");
+
+nextButton.onclick = () => {
+
+    chapter1.classList.remove("show");
+
+    setTimeout(() => {
+
+        chapter1.classList.add("hidden");
+
+        storyPage.classList.remove("hidden");
+
+        requestAnimationFrame(() => {
+            storyPage.classList.add("show");
+        });
+
+    }, 800);
+
+};
