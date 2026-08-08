@@ -64,8 +64,12 @@ start.onclick=()=>{
                 typeText(
                     "Welcome to our little world...",
                     typing2,
-                    ()=>{
-continueBtn.classList.add("appear");
+                    (continueBtn.style.display="inline-block";
+
+setTimeout(()=>{
+    continueBtn.style.opacity="1";
+},100);)=>{
+
 
                         setTimeout(()=>{
                             continueBtn.classList.add("appear");
