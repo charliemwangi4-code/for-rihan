@@ -613,3 +613,97 @@ button:hover {
     }
 
 }
+/* ================= VIDEO PAGE ================= */
+
+.videoPage {
+    position: fixed;
+    inset: 0;
+
+    background: linear-gradient(
+        135deg,
+        #ffd6e7,
+        #ffe9f3,
+        #fff5fa
+    );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    z-index: 999;
+
+    opacity: 0;
+
+    transition: opacity 1s ease;
+
+    overflow-y: auto;
+}
+
+.videoPage.show {
+    opacity: 1;
+}
+
+.videoPage h1 {
+    color: #ff5e9b;
+    font-size: 2.7rem;
+
+    margin-bottom: 12px;
+
+    text-shadow:
+        0 0 20px rgba(255,94,155,.25);
+}
+
+.videoIntro {
+    color: #7b5064;
+
+    font-size: 1.15rem;
+
+    max-width: 600px;
+
+    line-height: 1.7;
+
+    margin-bottom: 22px;
+}
+
+.rihanVideo {
+    width: min(90vw, 700px);
+
+    max-height: 60vh;
+
+    border-radius: 25px;
+
+    background: #000;
+
+    box-shadow:
+        0 15px 45px rgba(255,80,150,.3);
+}
+
+#videoNext {
+    margin-top: 25px;
+}
+
+@media (max-width: 600px) {
+
+    .videoPage {
+        justify-content: flex-start;
+        padding: 35px 18px;
+    }
+
+    .videoPage h1 {
+        font-size: 2.1rem;
+    }
+
+    .videoIntro {
+        font-size: 1rem;
+    }
+
+    .rihanVideo {
+        width: 100%;
+        max-height: 65vh;
+    }
+}
