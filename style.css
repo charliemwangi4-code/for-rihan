@@ -732,3 +732,50 @@ button:hover {
         font-size: 1.4rem;
     }
 }
+/* ================= MOBILE PAGE FIX ================= */
+
+@media (max-width: 600px) {
+
+    /* STORY PAGE */
+    .storyPage {
+        position: fixed;
+        inset: 0;
+        overflow-y: auto;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 40px 18px 60px;
+    }
+
+    /* VIDEO PAGE */
+    .videoPage {
+        position: fixed;
+        inset: 0;
+        overflow-y: auto;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 40px 18px 60px;
+    }
+
+    /* SURPRISE PAGE */
+    .surprisePage {
+        position: fixed;
+        inset: 0;
+        overflow-y: auto;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 40px 18px 60px;
+        text-align: center;
+    }
+
+    /* SONG PAGE */
+    .songPage {
+        position: fixed;
+        inset: 0;
+        overflow-y: auto;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 40px 18px 60px;
+        text-align: center;
+    }
+
+}
