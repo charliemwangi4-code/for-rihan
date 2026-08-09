@@ -1,709 +1,308 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+const hearts = document.getElementById("hearts");
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+let paused = false;
+
+// ================= FLOATING HEARTS =================
+
+function createHeart() {
+if (paused) return;
+
+```
+const heart = document.createElement("div");
+heart.classList.add("heart");
+
+const emojis = ["🥹", "💕", "🫶🏽"];
+heart.innerHTML =
+    emojis[Math.floor(Math.random() * emojis.length)];
+
+heart.style.left = Math.random() * 100 + "vw";
+
+heart.style.animationDuration =
+    (4 + Math.random() * 4) + "s";
+
+heart.style.fontSize =
+    (20 + Math.random() * 18) + "px";
+
+hearts.appendChild(heart);
+
+setTimeout(() => {
+    heart.remove();
+}, 8000);
+```
+
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+setInterval(createHeart, 350);
 
-    background: linear-gradient(
-        135deg,
-        #ffd6e7,
-        #ffe9f3,
-        #fff5fa
+// ================= PAGE 1 → PAGE 2 =================
+
+const hero = document.querySelector(".hero");
+const intro = document.getElementById("intro");
+
+const startButton =
+document.getElementById("startButton");
+
+const typing =
+document.getElementById("typing");
+
+const typing2 =
+document.getElementById("typing2");
+
+const continueBtn =
+document.getElementById("continueBtn");
+
+startButton.onclick = () => {
+
+```
+startButton.style.transform = "scale(.88)";
+
+paused = true;
+
+hero.style.transition = "1s";
+hero.style.opacity = "0";
+
+setTimeout(() => {
+
+    hero.style.display = "none";
+
+    intro.classList.remove("hidden");
+
+    requestAnimationFrame(() => {
+        intro.classList.add("show");
+    });
+
+    typeText(
+        "Hi babyyyy RayRay 🥹💕",
+        typing,
+        () => {
+
+            typeText(
+                "Welcome to our little world...",
+                typing2,
+                () => {
+                    continueBtn.classList.add("appear");
+                }
+            );
+
+        }
     );
 
-    min-height: 100vh;
+}, 1000);
+```
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+};
 
+// ================= TYPING EFFECT =================
 
-/* ================= HERO ================= */
+function typeText(text, element, callback) {
 
-.hero {
-    width: 90%;
-    max-width: 700px;
+```
+let i = 0;
 
-    background: rgba(255,255,255,.55);
+element.innerHTML = "";
 
-    backdrop-filter: blur(18px);
+const timer = setInterval(() => {
 
-    border-radius: 30px;
+    element.innerHTML += text.charAt(i);
 
-    padding: 60px 35px;
+    i++;
 
-    text-align: center;
+    if (i >= text.length) {
 
-    box-shadow:
-        0 15px 40px rgba(255,120,170,.25);
+        clearInterval(timer);
 
-    position: relative;
-    z-index: 5;
-
-    animation: float 4s ease-in-out infinite;
-}
-
-
-.hero h1 {
-    font-size: 3.2rem;
-
-    color: #ff5e9b;
-
-    margin-bottom: 18px;
-
-    text-shadow:
-        0 0 20px rgba(255,94,155,.25);
-}
-
-
-.hero p {
-    color: #7b5064;
-
-    font-size: 1.2rem;
-
-    line-height: 1.8;
-
-    margin-bottom: 40px;
-}
-
-
-.name {
-    display: block;
-
-    margin-top: 12px;
-
-    font-size: 4rem;
-
-    color: #ff3f86;
-
-    font-weight: 700;
-}
-
-
-/* ================= BUTTON ================= */
-
-button {
-    border: none;
-
-    background: #ff71ab;
-
-    color: white;
-
-    padding: 18px 42px;
-
-    font-size: 1.15rem;
-
-    border-radius: 999px;
-
-    cursor: pointer;
-
-    transition: .35s;
-
-    box-shadow:
-        0 12px 25px rgba(255,113,171,.35);
-}
-
-
-button:hover {
-    transform:
-        translateY(-6px)
-        scale(1.05);
-
-    background: #ff4f95;
-
-    box-shadow:
-        0 20px 40px rgba(255,80,150,.45);
-}
-
-
-#startButton {
-    transition: transform .2s ease;
-}
-
-
-#startButton:active {
-    transform: scale(.88);
-}
-
-
-/* ================= FLOATING EMOJIS ================= */
-
-#hearts {
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    z-index: 0;
-}
-
-
-.heart {
-    position: absolute;
-
-    bottom: -50px;
-
-    animation: rise linear forwards;
-
-    opacity: .85;
-}
-
-
-@keyframes rise {
-
-    0% {
-        transform:
-            translateY(0)
-            scale(.8)
-            rotate(0deg);
-
-        opacity: 0;
+        if (callback) {
+            callback();
+        }
     }
 
-    20% {
-        opacity: 1;
-    }
+}, 65);
+```
 
-    100% {
-        transform:
-            translateY(-120vh)
-            scale(1.4)
-            rotate(360deg);
-
-        opacity: 0;
-    }
 }
 
+// ================= PAGE 2 → PAGE 3 =================
 
-/* ================= INTRO ================= */
+const chapter1 =
+document.getElementById("chapter1");
 
-.hidden {
-    display: none !important;
-}
+continueBtn.onclick = () => {
 
+```
+intro.classList.remove("show");
 
-.intro {
-    position: fixed;
+setTimeout(() => {
 
-    inset: 0;
+    intro.classList.add("hidden");
 
-    background: linear-gradient(
-        135deg,
-        #ffd6e7,
-        #ffe9f3,
-        #fff5fa
-    );
+    chapter1.classList.remove("hidden");
 
-    display: flex;
+    requestAnimationFrame(() => {
+        chapter1.classList.add("show");
+    });
 
-    justify-content: center;
-    align-items: center;
+}, 800);
+```
 
-    flex-direction: column;
+};
 
-    z-index: 999;
+// ================= PAGE 3 → STORY PAGE =================
 
-    text-align: center;
+const nextButton =
+document.getElementById("nextButton");
 
-    opacity: 0;
+const storyPage =
+document.getElementById("storyPage");
 
-    transition: 1s;
-}
+nextButton.onclick = () => {
 
+```
+chapter1.classList.remove("show");
 
-.intro.show {
-    display: flex;
+setTimeout(() => {
 
-    opacity: 1;
-}
+    chapter1.classList.add("hidden");
 
+    storyPage.classList.remove("hidden");
 
-.intro h1 {
-    color: #ff5e9b;
+    requestAnimationFrame(() => {
+        storyPage.classList.add("show");
+    });
 
-    font-size: 3rem;
+}, 800);
+```
 
-    margin-bottom: 25px;
+};
 
-    text-shadow:
-        0 0 20px rgba(255,94,155,.25);
-}
+// ================= STORY CHAPTERS =================
 
+const storyChapter1 =
+document.getElementById("storyChapter1");
 
-.intro p {
-    color: #7b5064;
+const chapter2 =
+document.getElementById("chapter2");
 
-    font-size: 1.3rem;
+const chapter3 =
+document.getElementById("chapter3");
 
-    margin-bottom: 35px;
-}
+const storyNext1 =
+document.getElementById("storyNext1");
 
+const storyNext2 =
+document.getElementById("storyNext2");
 
-/* ================= CONTINUE BUTTON ================= */
+const storyNext3 =
+document.getElementById("storyNext3");
 
-#continueBtn {
-    display: none;
+// Chapter 1 → Chapter 2
 
-    margin-top: 10px;
+storyNext1.onclick = () => {
 
-    opacity: 0;
+```
+storyChapter1.classList.add("hidden");
 
-    transition: opacity 1s ease;
-}
+chapter2.classList.remove("hidden");
 
+requestAnimationFrame(() => {
+    chapter2.classList.add("show");
+});
+```
 
-#continueBtn.appear {
-    display: inline-block;
+};
 
-    opacity: 1;
-}
+// Chapter 2 → Chapter 3
 
+storyNext2.onclick = () => {
 
-/* ================= SPARKLES ================= */
+```
+chapter2.classList.add("hidden");
 
-.sparkle {
-    position: fixed;
+chapter3.classList.remove("hidden");
 
-    font-size: 25px;
+requestAnimationFrame(() => {
+    chapter3.classList.add("show");
+});
+```
 
-    pointer-events: none;
+};
 
-    animation: sparkleBoom 1s ease forwards;
-}
+// ================= STORY → VIDEO =================
 
+const videoPage =
+document.getElementById("videoPage");
 
-@keyframes sparkleBoom {
+const videoNext =
+document.getElementById("videoNext");
 
-    from {
-        transform:
-            translate(0,0)
-            scale(0);
+storyNext3.onclick = () => {
 
-        opacity: 1;
-    }
+```
+chapter3.classList.remove("show");
 
-    to {
-        transform:
-            translate(var(--x),var(--y))
-            scale(1.5);
+setTimeout(() => {
 
-        opacity: 0;
-    }
-}
+    chapter3.classList.add("hidden");
 
+    videoPage.classList.remove("hidden");
 
-/* ================= FLOAT ANIMATION ================= */
+    requestAnimationFrame(() => {
+        videoPage.classList.add("show");
+    });
 
-@keyframes float {
+}, 800);
+```
 
-    0% {
-        transform: translateY(0px);
-    }
+};
 
-    50% {
-        transform: translateY(-8px);
-    }
+// ================= VIDEO → SURPRISE =================
 
-    100% {
-        transform: translateY(0px);
-    }
-}
-/* ================= PAGE 3 ================= */
+const surprisePage =
+document.getElementById("surprisePage");
 
-.chapter {
-    position: fixed;
-    inset: 0;
+const surpriseNext =
+document.getElementById("surpriseNext");
 
-    background: linear-gradient(
-        135deg,
-        #ffd6e7,
-        #ffe9f3,
-        #fff5fa
-    );
+videoNext.onclick = () => {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+```
+videoPage.classList.remove("show");
 
-    flex-direction: column;
+setTimeout(() => {
 
-    text-align: center;
+    videoPage.classList.add("hidden");
 
-    z-index: 999;
+    surprisePage.classList.remove("hidden");
 
-    opacity: 0;
+    requestAnimationFrame(() => {
+        surprisePage.classList.add("show");
+    });
 
-    transition: 1s ease;
-}
+}, 800);
+```
 
-.chapter.show {
-    opacity: 1;
-}
+};
 
-.chapter h1 {
-    color: #ff5e9b;
+// ================= SURPRISE → SONG =================
 
-    font-size: 3rem;
+const songPage =
+document.getElementById("songPage");
 
-    margin-bottom: 15px;
+surpriseNext.onclick = () => {
 
-    text-shadow:
-        0 0 20px rgba(255,94,155,.25);
-}
+```
+surprisePage.classList.remove("show");
 
-.chapterText {
-    color: #7b5064;
+setTimeout(() => {
 
-    font-size: 1.2rem;
+    surprisePage.classList.add("hidden");
 
-    margin-bottom: 25px;
-}
+    songPage.classList.remove("hidden");
 
-.rihanPhoto {
-    width: 280px;
-    height: 350px;
+    requestAnimationFrame(() => {
+        songPage.classList.add("show");
+    });
 
-    object-fit: cover;
+}, 800);
+```
 
-    border-radius: 25px;
-
-    border: 5px solid rgba(255,255,255,.8);
-
-    box-shadow:
-        0 15px 40px rgba(255,94,155,.3);
-
-    animation: photoAppear 1.5s ease;
-}
-
-.photoMessage {
-    color: #7b5064;
-
-    font-size: 1.15rem;
-
-    max-width: 500px;
-
-    margin: 25px 20px;
-
-    line-height: 1.7;
-}
-
-#nextButton {
-    margin-top: 5px;
-}
-
-@keyframes photoAppear {
-
-    from {
-        opacity: 0;
-        transform:
-            scale(.8)
-            translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            scale(1)
-            translateY(0);
-    }
-}
-/* ================= CINEMATIC PHOTO ================= */
-
-.rihanPhoto {
-    width: 300px;
-    height: 380px;
-
-    object-fit: cover;
-
-    border-radius: 28px;
-
-    border: 4px solid rgba(255, 255, 255, 0.9);
-
-    box-shadow:
-        0 0 20px rgba(255, 105, 160, 0.25),
-        0 20px 50px rgba(255, 80, 150, 0.35);
-
-    animation:
-        photoAppear 1.5s ease forwards,
-        photoFloat 4s ease-in-out 1.5s infinite;
-
-    transition: transform .4s ease, box-shadow .4s ease;
-}
-
-.rihanPhoto:hover {
-    transform: scale(1.03);
-
-    box-shadow:
-        0 0 30px rgba(255, 105, 160, 0.4),
-        0 25px 60px rgba(255, 80, 150, 0.45);
-}
-
-
-@keyframes photoAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            scale(.75)
-            translateY(40px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            scale(1)
-            translateY(0);
-    }
-}
-
-
-@keyframes photoFloat {
-
-    0% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
-}
-/* ================= PAGE 4 STORY ================= */
-
-.storyPage {
-    position: fixed;
-    inset: 0;
-
-    background: linear-gradient(
-        135deg,
-        #ffd6e7,
-        #ffe9f3,
-        #fff5fa
-    );
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    padding: 30px;
-
-    z-index: 999;
-
-    opacity: 0;
-
-    transition: opacity 1s ease;
-}
-
-.storyPage.show {
-    opacity: 1;
-}
-
-.storyPage h1 {
-    color: #ff5e9b;
-
-    font-size: 2.8rem;
-
-    margin-bottom: 25px;
-
-    text-shadow:
-        0 0 20px rgba(255,94,155,.25);
-}
-
-.storyCard {
-    max-width: 650px;
-
-    padding: 35px;
-
-    background: rgba(255,255,255,.55);
-
-    backdrop-filter: blur(18px);
-
-    border-radius: 30px;
-
-    box-shadow:
-        0 15px 40px rgba(255,120,170,.25);
-
-    animation: storyAppear 1.2s ease;
-}
-
-.storyCard h2 {
-    color: #ff4f95;
-
-    margin-bottom: 18px;
-
-    font-size: 1.7rem;
-}
-
-.storyCard p {
-    color: #7b5064;
-
-    font-size: 1.15rem;
-
-    line-height: 1.9;
-}
-
-#storyNext1 {
-    margin-top: 25px;
-}
-
-@keyframes storyAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(35px)
-            scale(.95);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-/* 📱 Mobile story scrolling */
-
-@media (max-width: 600px) {
-
-    .storyPage {
-        position: fixed;
-        overflow-y: auto;
-        justify-content: flex-start;
-        padding: 35px 18px;
-    }
-
-    .storyCard {
-        width: 100%;
-        max-width: 500px;
-        margin: 20px 0;
-    }
-
-    .storyCard p {
-        font-size: 1rem;
-        line-height: 1.7;
-    }
-
-    .storyPage h1 {
-        font-size: 2.2rem;
-    }
-
-}
-/* ================= VIDEO PAGE ================= */
-
-.videoPage {
-    position: fixed;
-    inset: 0;
-
-    background: linear-gradient(
-        135deg,
-        #ffd6e7,
-        #ffe9f3,
-        #fff5fa
-    );
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    padding: 30px;
-
-    z-index: 999;
-
-    opacity: 0;
-
-    transition: opacity 1s ease;
-
-    overflow-y: auto;
-}
-
-.videoPage.show {
-    opacity: 1;
-}
-
-.videoPage h1 {
-    color: #ff5e9b;
-    font-size: 2.7rem;
-
-    margin-bottom: 12px;
-
-    text-shadow:
-        0 0 20px rgba(255,94,155,.25);
-}
-
-.videoIntro {
-    color: #7b5064;
-
-    font-size: 1.15rem;
-
-    max-width: 600px;
-
-    line-height: 1.7;
-
-    margin-bottom: 22px;
-}
-
-.rihanVideo {
-    width: min(90vw, 700px);
-
-    max-height: 60vh;
-
-    border-radius: 25px;
-
-    background: #000;
-
-    box-shadow:
-        0 15px 45px rgba(255,80,150,.3);
-}
-
-#videoNext {
-    margin-top: 25px;
-}
-
-@media (max-width: 600px) {
-
-    .videoPage {
-        justify-content: flex-start;
-        padding: 35px 18px;
-    }
-
-    .videoPage h1 {
-        font-size: 2.1rem;
-    }
-
-    .videoIntro {
-        font-size: 1rem;
-    }
-
-    .rihanVideo {
-        width: 100%;
-        max-height: 65vh;
-    }
-}
+};
