@@ -226,3 +226,88 @@ surpriseNext.onclick = () => {
     }, 800);
 
 };
+// ================= SONG → FINAL PAGE =================
+
+const finalPage =
+    document.getElementById("finalPage");
+
+const restartButton =
+    document.getElementById("restartButton");
+
+const songVideo =
+    document.querySelector("#songPage video");
+
+songVideo.addEventListener("ended", () => {
+
+    songPage.classList.remove("show");
+
+    setTimeout(() => {
+
+        songPage.classList.add("hidden");
+
+        finalPage.classList.remove("hidden");
+
+        requestAnimationFrame(() => {
+            finalPage.classList.add("show");
+        });
+
+    }, 800);
+});
+
+
+// ================= FINAL PAGE → BEGINNING =================
+
+restartButton.onclick = () => {
+
+    finalPage.classList.remove("show");
+
+    setTimeout(() => {
+
+        finalPage.classList.add("hidden");
+
+        // Reset everything
+
+        songPage.classList.add("hidden");
+        songPage.classList.remove("show");
+
+        surprisePage.classList.add("hidden");
+        surprisePage.classList.remove("show");
+
+        videoPage.classList.add("hidden");
+        videoPage.classList.remove("show");
+
+        storyPage.classList.add("hidden");
+        storyPage.classList.remove("show");
+
+        chapter1.classList.add("hidden");
+        chapter1.classList.remove("show");
+
+        intro.classList.add("hidden");
+        intro.classList.remove("show");
+
+        // Reset story chapters
+
+        storyChapter1.classList.remove("hidden");
+        chapter2.classList.add("hidden");
+        chapter3.classList.add("hidden");
+
+        // Reset intro text
+
+        typing.innerHTML = "";
+        typing2.innerHTML = "";
+
+        continueBtn.classList.remove("appear");
+
+        // Reset hero
+
+        hero.style.display = "block";
+        hero.style.opacity = "1";
+
+        startButton.style.transform = "scale(1)";
+
+        // Start hearts again
+
+        paused = false;
+
+    }, 800);
+};
