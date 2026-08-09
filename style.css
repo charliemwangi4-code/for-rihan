@@ -639,3 +639,96 @@ button:hover {
         font-size: 2.1rem;
     }
 }
+/* ================= FINAL PAGE ================= */
+
+.finalPage {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        #ffd6e7,
+        #ffe9f3,
+        #fff5fa
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 1s ease;
+    overflow-y: auto;
+}
+
+.finalPage.show {
+    opacity: 1;
+}
+
+.finalPage h1 {
+    color: #ff5e9b;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-shadow:
+        0 0 20px rgba(255,94,155,.25);
+}
+
+.finalText {
+    color: #7b5064;
+    font-size: 1.15rem;
+    max-width: 650px;
+    line-height: 1.9;
+    margin-bottom: 22px;
+}
+
+.finalQuote {
+    color: #ff3f86;
+    font-size: 1.8rem;
+    max-width: 650px;
+    line-height: 1.5;
+    margin: 15px 20px 35px;
+    text-shadow:
+        0 0 15px rgba(255,63,134,.2);
+}
+
+#restartButton {
+    animation: restartGlow 2s ease-in-out infinite;
+}
+
+@keyframes restartGlow {
+    0% {
+        box-shadow:
+            0 12px 25px rgba(255,113,171,.35);
+    }
+
+    50% {
+        box-shadow:
+            0 0 35px rgba(255,80,150,.65);
+    }
+
+    100% {
+        box-shadow:
+            0 12px 25px rgba(255,113,171,.35);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .finalPage {
+        padding: 30px 20px;
+    }
+
+    .finalPage h1 {
+        font-size: 2.3rem;
+    }
+
+    .finalText {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .finalQuote {
+        font-size: 1.4rem;
+    }
+}
