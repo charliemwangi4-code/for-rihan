@@ -175,11 +175,11 @@ const storyNext3 = document.getElementById("storyNext3");
 
 storyNext3.onclick = () => {
 
-    chapter3.classList.remove("show");
+    storyPage.classList.remove("show");
 
     setTimeout(() => {
 
-        chapter3.classList.add("hidden");
+        storyPage.classList.add("hidden");
 
         videoPage.classList.remove("hidden");
 
@@ -188,7 +188,6 @@ storyNext3.onclick = () => {
         });
 
     }, 800);
-
 };
 const surprisePage = document.getElementById("surprisePage");
 const surpriseNext = document.getElementById("surpriseNext");
