@@ -169,3 +169,23 @@ storyNext2.onclick = () => {
     });
 
 };
+const videoPage = document.getElementById("videoPage");
+const storyNext3 = document.getElementById("storyNext3");
+
+storyNext3.onclick = () => {
+
+    chapter3.classList.remove("show");
+
+    setTimeout(() => {
+
+        chapter3.classList.add("hidden");
+
+        videoPage.classList.remove("hidden");
+
+        requestAnimationFrame(() => {
+            videoPage.classList.add("show");
+        });
+
+    }, 800);
+
+};
