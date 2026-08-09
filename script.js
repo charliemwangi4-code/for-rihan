@@ -190,3 +190,40 @@ storyNext3.onclick = () => {
     }, 800);
 
 };
+const surprisePage = document.getElementById("surprisePage");
+const surpriseNext = document.getElementById("surpriseNext");
+const songPage = document.getElementById("songPage");
+
+videoNext.onclick = () => {
+
+    videoPage.classList.remove("show");
+
+    setTimeout(() => {
+        videoPage.classList.add("hidden");
+
+        surprisePage.classList.remove("hidden");
+
+        requestAnimationFrame(() => {
+            surprisePage.classList.add("show");
+        });
+
+    }, 800);
+
+};
+
+surpriseNext.onclick = () => {
+
+    surprisePage.classList.remove("show");
+
+    setTimeout(() => {
+        surprisePage.classList.add("hidden");
+
+        songPage.classList.remove("hidden");
+
+        requestAnimationFrame(() => {
+            songPage.classList.add("show");
+        });
+
+    }, 800);
+
+};
