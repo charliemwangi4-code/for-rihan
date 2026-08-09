@@ -142,12 +142,16 @@ nextButton.onclick = () => {
 
 };
 const chapter2 = document.getElementById("chapter2");
+const chapter3 = document.getElementById("chapter3");
+
+const storyChapter1 = document.getElementById("storyChapter1");
+
 const storyNext1 = document.getElementById("storyNext1");
+const storyNext2 = document.getElementById("storyNext2");
 
 storyNext1.onclick = () => {
 
-    storyNext1.style.display = "none";
-
+    storyChapter1.classList.add("hidden");
     chapter2.classList.remove("hidden");
 
     requestAnimationFrame(() => {
@@ -155,13 +159,10 @@ storyNext1.onclick = () => {
     });
 
 };
-const chapter3 = document.getElementById("chapter3");
-const storyNext2 = document.getElementById("storyNext2");
 
 storyNext2.onclick = () => {
 
-    storyNext2.style.display = "none";
-
+    chapter2.classList.add("hidden");
     chapter3.classList.remove("hidden");
 
     requestAnimationFrame(() => {
