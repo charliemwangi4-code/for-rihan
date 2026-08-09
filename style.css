@@ -1,308 +1,641 @@
-const hearts = document.getElementById("hearts");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
-let paused = false;
-
-// ================= FLOATING HEARTS =================
-
-function createHeart() {
-if (paused) return;
-
-```
-const heart = document.createElement("div");
-heart.classList.add("heart");
-
-const emojis = ["🥹", "💕", "🫶🏽"];
-heart.innerHTML =
-    emojis[Math.floor(Math.random() * emojis.length)];
-
-heart.style.left = Math.random() * 100 + "vw";
-
-heart.style.animationDuration =
-    (4 + Math.random() * 4) + "s";
-
-heart.style.fontSize =
-    (20 + Math.random() * 18) + "px";
-
-hearts.appendChild(heart);
-
-setTimeout(() => {
-    heart.remove();
-}, 8000);
-```
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-setInterval(createHeart, 350);
-
-// ================= PAGE 1 → PAGE 2 =================
-
-const hero = document.querySelector(".hero");
-const intro = document.getElementById("intro");
-
-const startButton =
-document.getElementById("startButton");
-
-const typing =
-document.getElementById("typing");
-
-const typing2 =
-document.getElementById("typing2");
-
-const continueBtn =
-document.getElementById("continueBtn");
-
-startButton.onclick = () => {
-
-```
-startButton.style.transform = "scale(.88)";
-
-paused = true;
-
-hero.style.transition = "1s";
-hero.style.opacity = "0";
-
-setTimeout(() => {
-
-    hero.style.display = "none";
-
-    intro.classList.remove("hidden");
-
-    requestAnimationFrame(() => {
-        intro.classList.add("show");
-    });
-
-    typeText(
-        "Hi babyyyy RayRay 🥹💕",
-        typing,
-        () => {
-
-            typeText(
-                "Welcome to our little world...",
-                typing2,
-                () => {
-                    continueBtn.classList.add("appear");
-                }
-            );
-
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(
+        135deg,
+        #ffd6e7,
+        #ffe9f3,
+        #fff5fa
     );
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-}, 1000);
-```
+/* ================= HERO ================= */
 
-};
+.hero {
+    width: 90%;
+    max-width: 700px;
+    background: rgba(255,255,255,.55);
+    backdrop-filter: blur(18px);
+    border-radius: 30px;
+    padding: 60px 35px;
+    text-align: center;
+    box-shadow:
+        0 15px 40px rgba(255,120,170,.25);
+    position: relative;
+    z-index: 5;
+    animation: float 4s ease-in-out infinite;
+}
 
-// ================= TYPING EFFECT =================
+.hero h1 {
+    font-size: 3.2rem;
+    color: #ff5e9b;
+    margin-bottom: 18px;
+    text-shadow:
+        0 0 20px rgba(255,94,155,.25);
+}
 
-function typeText(text, element, callback) {
+.hero p {
+    color: #7b5064;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
 
-```
-let i = 0;
+.name {
+    display: block;
+    margin-top: 12px;
+    font-size: 4rem;
+    color: #ff3f86;
+    font-weight: 700;
+}
 
-element.innerHTML = "";
+/* ================= BUTTON ================= */
 
-const timer = setInterval(() => {
+button {
+    border: none;
+    background: #ff71ab;
+    color: white;
+    padding: 18px 42px;
+    font-size: 1.15rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .35s;
+    box-shadow:
+        0 12px 25px rgba(255,113,171,.35);
+}
 
-    element.innerHTML += text.charAt(i);
+button:hover {
+    transform:
+        translateY(-6px)
+        scale(1.05);
+    background: #ff4f95;
+    box-shadow:
+        0 20px 40px rgba(255,80,150,.45);
+}
 
-    i++;
+#startButton {
+    transition: transform .2s ease;
+}
 
-    if (i >= text.length) {
+#startButton:active {
+    transform: scale(.88);
+}
 
-        clearInterval(timer);
+/* ================= FLOATING EMOJIS ================= */
 
-        if (callback) {
-            callback();
-        }
+#hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    animation: rise linear forwards;
+    opacity: .85;
+}
+
+@keyframes rise {
+    0% {
+        transform:
+            translateY(0)
+            scale(.8)
+            rotate(0deg);
+        opacity: 0;
     }
 
-}, 65);
-```
+    20% {
+        opacity: 1;
+    }
 
+    100% {
+        transform:
+            translateY(-120vh)
+            scale(1.4)
+            rotate(360deg);
+        opacity: 0;
+    }
 }
 
-// ================= PAGE 2 → PAGE 3 =================
-
-const chapter1 =
-document.getElementById("chapter1");
-
-continueBtn.onclick = () => {
-
-```
-intro.classList.remove("show");
-
-setTimeout(() => {
-
-    intro.classList.add("hidden");
-
-    chapter1.classList.remove("hidden");
-
-    requestAnimationFrame(() => {
-        chapter1.classList.add("show");
-    });
-
-}, 800);
-```
-
-};
-
-// ================= PAGE 3 → STORY PAGE =================
-
-const nextButton =
-document.getElementById("nextButton");
-
-const storyPage =
-document.getElementById("storyPage");
-
-nextButton.onclick = () => {
-
-```
-chapter1.classList.remove("show");
-
-setTimeout(() => {
-
-    chapter1.classList.add("hidden");
-
-    storyPage.classList.remove("hidden");
-
-    requestAnimationFrame(() => {
-        storyPage.classList.add("show");
-    });
-
-}, 800);
-```
-
-};
-
-// ================= STORY CHAPTERS =================
-
-const storyChapter1 =
-document.getElementById("storyChapter1");
-
-const chapter2 =
-document.getElementById("chapter2");
-
-const chapter3 =
-document.getElementById("chapter3");
-
-const storyNext1 =
-document.getElementById("storyNext1");
-
-const storyNext2 =
-document.getElementById("storyNext2");
-
-const storyNext3 =
-document.getElementById("storyNext3");
-
-// Chapter 1 → Chapter 2
-
-storyNext1.onclick = () => {
-
-```
-storyChapter1.classList.add("hidden");
-
-chapter2.classList.remove("hidden");
-
-requestAnimationFrame(() => {
-    chapter2.classList.add("show");
-});
-```
-
-};
-
-// Chapter 2 → Chapter 3
-
-storyNext2.onclick = () => {
-
-```
-chapter2.classList.add("hidden");
-
-chapter3.classList.remove("hidden");
-
-requestAnimationFrame(() => {
-    chapter3.classList.add("show");
-});
-```
-
-};
-
-// ================= STORY → VIDEO =================
-
-const videoPage =
-document.getElementById("videoPage");
-
-const videoNext =
-document.getElementById("videoNext");
-
-storyNext3.onclick = () => {
-
-```
-chapter3.classList.remove("show");
-
-setTimeout(() => {
-
-    chapter3.classList.add("hidden");
-
-    videoPage.classList.remove("hidden");
-
-    requestAnimationFrame(() => {
-        videoPage.classList.add("show");
-    });
-
-}, 800);
-```
-
-};
-
-// ================= VIDEO → SURPRISE =================
-
-const surprisePage =
-document.getElementById("surprisePage");
-
-const surpriseNext =
-document.getElementById("surpriseNext");
-
-videoNext.onclick = () => {
-
-```
-videoPage.classList.remove("show");
-
-setTimeout(() => {
-
-    videoPage.classList.add("hidden");
-
-    surprisePage.classList.remove("hidden");
-
-    requestAnimationFrame(() => {
-        surprisePage.classList.add("show");
-    });
-
-}, 800);
-```
-
-};
-
-// ================= SURPRISE → SONG =================
-
-const songPage =
-document.getElementById("songPage");
-
-surpriseNext.onclick = () => {
-
-```
-surprisePage.classList.remove("show");
-
-setTimeout(() => {
-
-    surprisePage.classList.add("hidden");
-
-    songPage.classList.remove("hidden");
-
-    requestAnimationFrame(() => {
-        songPage.classList.add("show");
-    });
-
-}, 800);
-```
-
-};
+/* ================= HIDDEN ================= */
+
+.hidden {
+    display: none !important;
+}
+
+/* ================= INTRO ================= */
+
+.intro {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        #ffd6e7,
+        #ffe9f3,
+        #fff5fa
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999;
+    text-align: center;
+    opacity: 0;
+    transition: 1s;
+}
+
+.intro.show {
+    display: flex;
+    opacity: 1;
+}
+
+.intro h1 {
+    color: #ff5e9b;
+    font-size: 3rem;
+    margin-bottom: 25px;
+    text-shadow:
+        0 0 20px rgba(255,94,155,.25);
+}
+
+.intro p {
+    color: #7b5064;
+    font-size: 1.3rem;
+    margin-bottom: 35px;
+}
+
+/* ================= CONTINUE BUTTON ================= */
+
+#continueBtn {
+    display: none;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+#continueBtn.appear {
+    display: inline-block;
+    opacity: 1;
+}
+
+/* ================= SPARKLES ================= */
+
+.sparkle {
+    position: fixed;
+    font-size: 25px;
+    pointer-events: none;
+    animation: sparkleBoom 1s ease forwards;
+}
+
+@keyframes sparkleBoom {
+    from {
+        transform:
+            translate(0,0)
+            scale(0);
+        opacity: 1;
+    }
+
+    to {
+        transform:
+            translate(var(--x),var(--y))
+            scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* ================= FLOAT ANIMATION ================= */
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* ================= PAGE 3 ================= */
+
+.chapter {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        #ffd6e7,
+        #ffe9f3,
+        #fff5fa
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 999;
+    opacity: 0;
+    transition: 1s ease;
+}
+
+.chapter.show {
+    opacity: 1;
+}
+
+.chapter h1 {
+    color: #ff5e9b;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-shadow:
+        0 0 20px rgba(255,94,155,.25);
+}
+
+.chapterText {
+    color: #7b5064;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.rihanPhoto {
+    width: 300px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 28px;
+    border: 4px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 0 20px rgba(255, 105, 160, 0.25),
+        0 20px 50px rgba(255, 80, 150, 0.35);
+    animation:
+        photoAppear 1.5s ease forwards,
+        photoFloat 4s ease-in-out 1.5s infinite;
+    transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.rihanPhoto:hover {
+    transform: scale(1.03);
+    box-shadow:
+        0 0 30px rgba(255, 105, 160, 0.4),
+        0 25px 60px rgba(255, 80, 150, 0.45);
+}
+
+.photoMessage {
+    color: #7b5064;
+    font-size: 1.15rem;
+    max-width: 500px;
+    margin: 25px 20px;
+    line-height: 1.7;
+}
+
+#nextButton {
+    margin-top: 5px;
+}
+
+@keyframes photoAppear {
+    from {
+        opacity: 0;
+        transform:
+            scale(.75)
+            translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+@keyframes photoFloat {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* ================= PAGE 4 STORY ================= */
+
+.storyPage {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        #ffd6e7,
+        #ffe9f3,
+        #fff5fa
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.storyPage.show {
+    opacity: 1;
+}
+
+.storyPage h1 {
+    color: #ff5e9b;
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    text-shadow:
+        0 0 20px rgba(255,94,155,.25);
+}
+
+.storyCard {
+    max-width: 650px;
+    padding: 35px;
+    background: rgba(255,255,255,.55);
+    backdrop-filter: blur(18px);
+    border-radius: 30px;
+    box-shadow:
+        0 15px 40px rgba(255,120,170,.25);
+    animation: storyAppear 1.2s ease;
+}
+
+.storyCard h2 {
+    color: #ff4f95;
+    margin-bottom: 18px;
+    font-size: 1.7rem;
+}
+
+.storyCard p {
+    color: #7b5064;
+    font-size: 1.15rem;
+    line-height: 1.9;
+}
+
+#storyNext1 {
+    margin-top: 25px;
+}
+
+@keyframes storyAppear {
+    from {
+        opacity: 0;
+        transform:
+            translateY(35px)
+            scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+/* ================= MOBILE STORY ================= */
+
+@media (max-width: 600px) {
+
+    .storyPage {
+        position: fixed;
+        overflow-y: auto;
+        justify-content: flex-start;
+        padding: 35px 18px;
+    }
+
+    .storyCard {
+        width: 100%;
+        max-width: 500px;
+        margin: 20px 0;
+    }
+
+    .storyCard p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .storyPage h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* ================= VIDEO PAGE ================= */
+
+.videoPage {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        #ffd6e7,
+        #ffe9f3,
+        #fff5fa
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 1s ease;
+    overflow-y: auto;
+}
+
+.videoPage.show {
+    opacity: 1;
+}
+
+.videoPage h1 {
+    color: #ff5e9b;
+    font-size: 2.7rem;
+    margin-bottom: 12px;
+    text-shadow:
+        0 0 20px rgba(255,94,155,.25);
+}
+
+.videoIntro {
+    color: #7b5064;
+    font-size: 1.15rem;
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.rihanVideo {
+    width: min(90vw, 700px);
+    max-height: 60vh;
+    border-radius: 25px;
+    background: #000;
+    box-shadow:
+        0 15px 45px rgba(255,80,150,.3);
+}
+
+#videoNext {
+    margin-top: 25px;
+}
+
+/* ================= SURPRISE PAGE ================= */
+
+.surprisePage {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        #ffd6e7,
+        #ffe9f3,
+        #fff5fa
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 1s ease;
+    overflow-y: auto;
+}
+
+.surprisePage.show {
+    opacity: 1;
+}
+
+.surprisePage h1 {
+    color: #ff5e9b;
+    font-size: 3rem;
+    margin-bottom: 25px;
+}
+
+.surpriseText {
+    color: #7b5064;
+    font-size: 1.15rem;
+    max-width: 650px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+#surpriseNext {
+    margin-top: 10px;
+}
+
+/* ================= SONG PAGE ================= */
+
+.songPage {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        #ffd6e7,
+        #ffe9f3,
+        #fff5fa
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 1s ease;
+    overflow-y: auto;
+}
+
+.songPage.show {
+    opacity: 1;
+}
+
+.songPage h1 {
+    color: #ff5e9b;
+    font-size: 2.7rem;
+    max-width: 850px;
+    margin-bottom: 20px;
+    text-shadow:
+        0 0 20px rgba(255,94,155,.25);
+}
+
+.songIntro {
+    color: #7b5064;
+    font-size: 1.15rem;
+    margin-bottom: 25px;
+}
+
+.songPage .rihanVideo {
+    width: min(90vw, 700px);
+    max-height: 60vh;
+}
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .name {
+        font-size: 3rem;
+    }
+
+    .chapter h1 {
+        font-size: 2.2rem;
+    }
+
+    .rihanPhoto {
+        width: 230px;
+        height: 300px;
+    }
+
+    .photoMessage {
+        font-size: 1rem;
+    }
+
+    .videoPage h1 {
+        font-size: 2.1rem;
+    }
+
+    .videoIntro {
+        font-size: 1rem;
+    }
+
+    .rihanVideo {
+        width: 100%;
+        max-height: 65vh;
+    }
+
+    .surprisePage h1 {
+        font-size: 2.2rem;
+    }
+
+    .surpriseText {
+        font-size: 1rem;
+    }
+
+    .songPage h1 {
+        font-size: 2.1rem;
+    }
+}
